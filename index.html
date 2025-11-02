@@ -8,7 +8,7 @@
     :root{
       --bg:#0b0e17; --panel:#121826; --text:#e9edf7; --muted:#a7b0c3;
       --accent1:#4b9fff; --accent2:#9d6dff; --shadow:0 10px 30px rgba(0,0,0,.25);
-      --card: #0f1422;
+      --card:#0f1422;
     }
     body.light-mode{
       --bg:#f8f9fb; --panel:#ffffff; --text:#10141c; --muted:#5a6272;
@@ -56,23 +56,31 @@
     body.light-mode .stat{background:#fff;border:1px solid #e1e6f2}
     .stat .n{font-size:22px;font-weight:800}
 
-    /* SECTION LAYOUTS */
+    /* SECTION */
     section{padding:56px 20px}
     .container{max-width:1200px;margin:0 auto}
     h2.section-title{margin:0 0 20px;font-size:26px}
-    .grid-instructors{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+
+    /* INSTRUCTORS */
+    .instructors-rows{display:grid;gap:22px}
+    .grid-instructors-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:980px){ .grid-instructors-row{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:640px){ .grid-instructors-row{grid-template-columns:1fr} }
     .card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:var(--shadow);transition:background .3s,border .3s}
     body.light-mode .card{background:#fff;border:1px solid rgba(0,0,0,.1)}
     .card-pad{padding:20px}
     .instructor{text-align:center}
     .instructor img{width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:10px}
+    .instructor h3{margin:6px 0 2px}
+    .instructor .role{opacity:.8;margin-bottom:6px}
     .instructor ul{list-style:disc;text-align:left;margin:6px 0 0 18px;color:var(--muted);font-size:14px;line-height:1.7}
 
-    /* MEDIA */
+    /* MEDIA (Projects/Publs) */
+    .list-col{display:grid;gap:16px}
     .media{display:grid;grid-template-columns:minmax(220px,280px) 1fr;gap:16px}
     .media img{width:100%;height:160px;object-fit:cover;border-radius:12px}
     .abstract{font-size:14px;color:var(--muted)}
-    .list-col{display:grid;gap:16px}
+    @media (max-width:640px){ .media{grid-template-columns:1fr} .media img{height:200px} .hero h1{font-size:28px} }
 
     /* CONTACT */
     #contact .wrap{display:flex;gap:24px;flex-wrap:wrap}
@@ -83,15 +91,9 @@
     body.light-mode .mini{background:#e9ecf5;color:#222}
     label{display:block;margin:10px 0 6px;font-weight:700}
     input,select,textarea{width:100%;background:#1e2638;border:1px solid rgba(255,255,255,.15);color:#fff;border-radius:8px;padding:10px}
-    textarea{height:120px;resize:none}
     body.light-mode input,body.light-mode select,body.light-mode textarea{background:#f2f4f8;color:#000;border-color:rgba(0,0,0,.1)}
-    .submit{margin-top:14px;width:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#0b0e17;
-            border:none;border-radius:10px;padding:12px;font-weight:800}
-    @media (max-width:640px){
-      .media{grid-template-columns:1fr}
-      .media img{height:200px}
-      .hero h1{font-size:28px}
-    }
+    textarea{height:120px;resize:none}
+    .submit{margin-top:14px;width:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#0b0e17;border:none;border-radius:10px;padding:12px;font-weight:800}
   </style>
 </head>
 <body>
@@ -145,23 +147,149 @@
   <section id="instructors">
     <div class="container">
       <h2 class="section-title">Instructors</h2>
-      <div class="grid-instructors">
-        <div class="card card-pad instructor">
-          <img src="assets/jihwanbae.jpg" alt="Jihwan Bae" />
-          <h3>Jason Bae</h3>
-          <ul>
-            <li>(현) 미네르바프렙 대표원장</li>
-            <li>(현) 탑클유학원 메디컬 프로그램 강사</li>
-            <li>(현) 위더엘리트 AP Cal BC 강사</li>
-            <li>(전) 서초 USIS AP Cal BC 교사</li>
-            <li>(전) 압구정 브롬튼에듀 AP 강사</li>
-            <li>(전) LG전자 AI 프로그래밍 강사</li>
-            <li>리서치 프로그램 전문 강사</li>
-            <li>Caltech 학부 Research Fellow</li>
-            <li>부산과학고등학교 졸업</li>
-            <li>정부출연연구소 AI 연구원 출신</li>
-          </ul>
+
+      <div class="instructors-rows">
+        <!-- Row 1 -->
+        <div class="grid-instructors-row">
+          <div class="card card-pad instructor">
+            <img src="assets/jihwanbae.jpg" alt="Jihwan Bae" />
+            <h3>Jason Bae</h3>
+            <div class="role">Director • Research Mentor</div>
+            <ul>
+              <li>(현) 미네르바프렙 대표원장</li>
+              <li>(전) 탑클유학원 메디컬 프로그램 강사</li>
+              <li>(전) 위더엘리트 AP Cal BC 강사</li>
+              <li>(전) 서초 USIS AP Cal BC 교사</li>
+              <li>(전) 압구정 브롬튼에듀 AP 강사</li>
+              <li>(전) LG전자 AI 프로그래밍 강사</li>
+              <li>리서치 프로그램 전문 강사</li>
+              <li>Caltech 학부 Research Fellow</li>
+              <li>부산과학고등학교 졸업</li>
+              <li>정부출연연구소 AI 연구원 출신</li>
+            </ul>
+          </div>
+
+          <div class="card card-pad instructor">
+            <img src="assets/dook.jpeg" alt="Instructor Placeholder 1" />
+            <h3>Ayaan Baik</h3>
+            <div class="role">Specialty • Role</div>
+            <ul>
+              <li>(현) 미네르바프렙 리서치 프로그램 총괄</li>
+              <li>(전) S&S 아카데미 AP Statistics, Physics 강사</li>
+              <li>(전) 노아아카데미 AP Chemistry 강사</li>
+              <li>(전) 어라운즈학원 IB Chemistry 강사</li>
+              <li>(전) 프린스턴리뷰 AP Chemistry 강사</li>
+              <li>포항공과대학교 전기전자공학 학사 졸업(B.S.)</li>
+              <li>포항공과대학교 의생명화학 박사 졸업(Ph.D.)</li>
+              <li>국제의료기술학회 최우수 연구자상</li>
+              <li>삼성전자 연구원 출신</li>
+              
+            </ul>
+          </div>
+
+          <div class="card card-pad instructor">
+            <img src="assets/ashley.jpeg" alt="Instructor Placeholder 2" />
+            <h3>Ashley Kwon</h3>
+            <div class="role">Specialty • Role</div>
+            <ul>
+              <li>(현) 미네르바프렙 메디컬 프로그램 총괄</li>
+              <li>(현) 미네르바프렙 에세이스트</li>
+              <li>Columbia University 생물학 학사 우등 졸업(B.S.)</li>
+              <li>UC Berkeley, 대사생물학 석사 졸업(M.S.)</li>
+              <li>AstraZeneca 연구원 출신</li>
+              <li>의학/생명과학 SCIE급 논문 다수 보유</li>
+            </ul>
+          </div>
         </div>
+
+        <!-- Row 2 -->
+        <div class="grid-instructors-row">
+          <div class="card card-pad instructor">
+            <img src="assets/myong.jpeg" alt="Instructor Placeholder 3" />
+            <h3>Kelly Lee</h3>
+            <div class="role">Specialty • Role</div>
+            <ul>
+              <li>(현) 미네르바프렙 Biochemistry 대표 강사</li>
+              <li>(전) 대치 컨설팅 메디컬 컨설턴트</li>
+              <li>(전) 이끌다 교육연구소 메디컬 멘토</li>
+              <li>연세대학교 생화학 학사 졸업(B.S.)</li>
+              <li>연세대학교 고등과학원 연구원 출신</li>
+              <li>2024 한국 의학교육입문검사 자연과학2 수석</li>
+              <li>School of Dentistry/School of Medicine 합격</li>
+            </ul>
+          </div>
+          <div class="card card-pad instructor">
+            <img src="assets/bo.jpeg" alt="Instructor Placeholder 4" />
+            <h3>Stephen Jung</h3>
+            <div class="role">Specialty • Role</div>
+            <ul>
+              <li>(현) 미네르바프렙 AP Biology 대표 강사</li>
+              <li>(전) 제주 뉴욕아카데미 GPA 강사</li>
+              <li>(전) 제주 뉴욕아카데미 AP Biology 강사</li>
+              <li>제주 국제학교 전문(NLCS, BHA, SJA, KIS) 모두 지도</li>
+              <li>부산일과학고등학교 졸업</li>
+              <li>포항공과대학교 생명과학 학사 수석 졸업(B.S.)</li>
+              <li>포항공과대학교 이학사 수석 졸업</li>
+              <li>School of Medicine, Cha Univ.</li>
+            </ul>
+          </div>
+          <div class="card card-pad instructor">
+            <img src="assets/hoboong.jpeg" alt="Instructor Placeholder 5" />
+            <h3>Justin Lee</h3>
+            <div class="role">Specialty • Role</div>
+            <ul>
+              <li>(현) 미네르바프렙 Math, Physics 대표 강사</li>
+              <li>(전) 자사고 수리면접 강사</li>
+              <li>(전) 대치 리즈집현전 강사</li>
+              <li>경기과학고등학교 수석 입학</li>
+              <li>서울대학교 기계공학 학사 수석 졸업(B.S.)</li>
+              <li>서울대학교 공과대학 차석 졸업</li>
+              <li>정부출연연구소 Robotics 연구원 출신</li>
+              <li>올림피아드 수상자 출신(수학, 물리, 화학)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="grid-instructors-row">
+          <div class="card card-pad instructor">
+            <img src="assets/swc.jpeg" alt="Instructor Placeholder 6" />
+            <h3>Sean Shin</h3>
+            <div class="role">Specialty • Role</div>
+            <ul>
+              <li>(현) 미네르바프렙 AP Economy 대표강사</li>
+              <li>(전) SAMSIN AI 리서처</li>
+              <li>(전) TALOS AI 리서치 엔지니어</li>
+              <li>세종과학고등학교 졸업</li>
+              <li>서울대학교 경제학 학사 최우등 졸업(B.S.)</li>
+              <li>KAIST 인공지능 대학원 석사 졸업(M.S.)</li>
+              <li>AI 관련 논문 다수 보유</li>
+            </ul>
+          </div>
+          <div class="card card-pad instructor">
+            <img src="assets/hkk.jpeg" alt="Instructor Placeholder 7" />
+            <h3>Steven Kang</h3>
+            <div class="role">Specialty • Role</div>
+            <ul>
+              <li>(현) 미네르바프렙 메디컬 프로그램 대표강사</li>
+              <li>(전) 분당차병원 연구원</li>
+              <li>(전) 글로벌 컨설팅펌 출신</li>
+              <li>(전) 서울아산병원, 삼성서울병원 서브인턴</li>
+              <li>대구과학고등학교 졸업</li>
+              <li>포항공과대학교 생물학 학사 수석 졸업(B.S.)</li>
+              <li>포항공과대학교 전체 차석 졸업</li>
+              <li>한국생물올림피아드(KBO) 국가대표 상비군 출신</li>
+              <li>의학 SCIE 논문 다수 보유</li>
+            </ul>
+          </div>
+          <div class="card card-pad instructor">
+            <img src="assets/instructor_placeholder8.jpg" alt="Instructor Placeholder 8" />
+            <h3>Instructor Name</h3>
+            <div class="role">Specialty • Role</div>
+            <ul><li>약력/소개를 여기에 입력하세요.</li></ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
