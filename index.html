@@ -76,6 +76,15 @@
     .instructor ul{list-style:disc;text-align:left;margin:6px 0 0 18px;color:var(--muted);font-size:14px;line-height:1.7}
 
     /* MEDIA (Projects/Publs) */
+    .accepted-tag {
+  color: #e63946;         /* 빨간색 */
+  font-weight: 800;       /* 볼드체 */
+  font-size: 15px;        /* 살짝 작게 */
+  display: block;         /* 한 줄 전체 차지 */
+  margin-bottom: 6px;     /* 제목과 간격 */
+  letter-spacing: 0.3px;  /* 자간 약간 */
+}
+
     .list-col{display:grid;gap:16px}
     .media{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:16px; align-items: center;}
     .media img{width:100%;height:240px;object-fit:cover;border-radius:12px; align-items: center;}
@@ -296,6 +305,7 @@
         <article class="card card-pad media">
           <img src="assets/vascular.png" alt="Vascular Network" />
           <div>
+            <span class="accepted-tag">Accepted to Curieux Academic Journal</span>
             <h3>Angiogenesis Modeling by Region-Specific Vascular Dynamics</h3>
             <p class="abstract">Angiogenesis, the formation of new blood vessels, is critical for cancer progression and metastasis. This study investigates how location-specific vascular dynamics, such as pressure gradients and flow rates, influence angiogenesis rates. Using computational modeling, vascular networks were simulated for different body regions, including arms or legs, kidneys, and lungs, employing biophysical equations like Hagen-Poiseuille's law. The results show that regions with lower pressure gradients (e.g., lungs and arms/legs) exhibit faster angiogenesis due to hypoxia-driven compensatory mechanisms, while highly perfused regions (e.g., kidneys) demonstrate slower angiogenesis despite higher pressure gradients. These findings highlight that angiogenesis is not solely pressure-driven but influenced by the interplay of hypoxia and vascular regulation. This study provides insights into how tumor location impacts angiogenesis and metastasis, offering a foundation for tailoring anti-angiogenic therapies and advancing our understanding of vascular dynamics in cancer progression.</p>
           </div>
@@ -303,6 +313,7 @@
         <article class="card card-pad media">
           <img src="assets/gingivitis.png" alt="Gingivitis" />
           <div>
+            <span class="accepted-tag">Accepted to Curieux Academic Journal</span>
             <h3>Calibration for Gingivitis Binary Classifier via Epoch-wise Decaying Label-Smoothing </h3>
             <p class="abstract">Future healthcare systems will heavily rely on ill-labeled data due to scarcity of the experts who are trained enough to label the data. Considering the contamination of the dataset, it is not desirable to make the neural network being overconfident to the dataset, but rather giving them some margins for the prediction is preferable. In this paper, we propose a novel epoch-wise decaying label-smoothing function to alleviate the model over-confidency, and it outperforms the neural network trained with conventional cross entropy by 6.0%.</p>
           </div>
