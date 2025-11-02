@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minerva Prep</title>
+  <style>
+    :root{
+      --bg:#0b0e17; --panel:#121826; --text:#e9edf7; --muted:#a7b0c3;
+      --accent1:#4b9fff; --accent2:#9d6dff; --shadow:0 10px 30px rgba(0,0,0,.25);
+      --card: #0f1422;
+    }
+    body.light-mode{
+      --bg:#f8f9fb; --panel:#ffffff; --text:#10141c; --muted:#5a6272;
+      --accent1:#4479ff; --accent2:#7c5cff; --card:#fff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;transition:background .3s,color .3s}
+
+    /* NAV */
+    header{position:sticky;top:0;z-index:999;background:rgba(11,14,23,.8);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+    body.light-mode header{background:rgba(255,255,255,.8);border-color:rgba(0,0,0,.08)}
+    .nav{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;gap:20px;align-items:center;justify-content:space-between}
+    .brand{font-weight:800;letter-spacing:.3px}
+    .nav a{color:var(--text);text-decoration:none;opacity:.9}
+    .nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+    .nav a:hover{opacity:1}
+    #theme-toggle{background:none;border:none;font-size:20px;cursor:pointer;color:var(--text)}
+
+    /* NEWS */
+    .news-strip{border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);
+      background:linear-gradient(90deg,rgba(124,155,255,.12),rgba(161,120,255,.10))}
+    body.light-mode .news-strip{background:linear-gradient(90deg,rgba(124,155,255,.08),rgba(161,120,255,.05))}
+    .news-inner{max-width:1200px;margin:0 auto;padding:10px 20px}
+    .news-inner strong{margin-right:10px}
+    .news-inner ul{list-style:none;margin:8px 0 0 0;padding:0}
+    .news-inner li{margin:4px 0}
+
+    /* HERO */
+    .hero{width:100%;background:radial-gradient(1200px 600px at 10% -10%,rgba(77,143,255,.25),transparent),
+                         radial-gradient(900px 600px at 90% 10%,rgba(157,109,255,.23),transparent);
+           padding:72px 20px;transition:background .3s}
+    body.light-mode .hero{background:linear-gradient(120deg,#f7f9ff 0%,#edf1ff 100%)}
+    .hero-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+    .hero h1{font-size:34px;margin:0}
+    .hero p{color:var(--muted);margin:0 0 10px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;transition:.2s}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#10121a}
+    .btn-ghost{border:1px solid rgba(255,255,255,.18);color:var(--text)}
+    body.light-mode .btn-ghost{border-color:rgba(0,0,0,.15)}
+    .btn:hover{opacity:.85}
+    .stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px}
+    .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);padding:12px 14px;border-radius:12px;min-width:160px}
+    body.light-mode .stat{background:#fff;border:1px solid #e1e6f2}
+    .stat .n{font-size:22px;font-weight:800}
+
+    /* SECTION LAYOUTS */
+    section{padding:56px 20px}
+    .container{max-width:1200px;margin:0 auto}
+    h2.section-title{margin:0 0 20px;font-size:26px}
+    .grid-instructors{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:var(--shadow);transition:background .3s,border .3s}
+    body.light-mode .card{background:#fff;border:1px solid rgba(0,0,0,.1)}
+    .card-pad{padding:20px}
+    .instructor{text-align:center}
+    .instructor img{width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:10px}
+    .instructor ul{list-style:disc;text-align:left;margin:6px 0 0 18px;color:var(--muted);font-size:14px;line-height:1.7}
+
+    /* MEDIA */
+    .media{display:grid;grid-template-columns:minmax(220px,280px) 1fr;gap:16px}
+    .media img{width:100%;height:160px;object-fit:cover;border-radius:12px}
+    .abstract{font-size:14px;color:var(--muted)}
+    .list-col{display:grid;gap:16px}
+
+    /* CONTACT */
+    #contact .wrap{display:flex;gap:24px;flex-wrap:wrap}
+    .info-box,.form-box{flex:1;min-width:340px}
+    .info-box ul{list-style:disc;margin-left:18px;color:var(--muted)}
+    .btn-row{display:flex;gap:10px;margin-top:10px}
+    .mini{background:#1e2638;border:none;color:#fff;padding:8px 12px;border-radius:8px}
+    body.light-mode .mini{background:#e9ecf5;color:#222}
+    label{display:block;margin:10px 0 6px;font-weight:700}
+    input,select,textarea{width:100%;background:#1e2638;border:1px solid rgba(255,255,255,.15);color:#fff;border-radius:8px;padding:10px}
+    textarea{height:120px;resize:none}
+    body.light-mode input,body.light-mode select,body.light-mode textarea{background:#f2f4f8;color:#000;border-color:rgba(0,0,0,.1)}
+    .submit{margin-top:14px;width:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#0b0e17;
+            border:none;border-radius:10px;padding:12px;font-weight:800}
+    @media (max-width:640px){
+      .media{grid-template-columns:1fr}
+      .media img{height:200px}
+      .hero h1{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="brand">Minerva Prep</div>
+      <ul>
+        <li><a href="#news">News</a></li>
+        <li><a href="#instructors">Instructors</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <!-- NEWS -->
+  <div id="news" class="news-strip">
+    <div class="news-inner">
+      <strong>🗞️ News</strong>
+      <ul>
+        <li>2025-09 — One paper has been accepted to International Journal of High School Research.</li>
+        <li>2025-07 — One paper has been accepted to Journal of High School Science.</li>
+        <li>2025-05 — One paper has been accepted to Curieux Academic Journal.</li>
+        <li>2025-03 — Big congrats! J took first place in Dover Science Conference.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero" id="home">
+    <div class="hero-inner">
+      <h1>Premed-first instruction by doctors and medical students.</h1>
+      <p>미네르바프렙은 <b>의사와 의대생</b>으로 구성된 의학 교육·연구 스튜디오입니다. Premed 학생을 대상으로, 임상적 사고와 과학적 글쓰기를 기반으로 한 커리큘럼, 연구 멘토링, 그리고 출판 수준의 결과물을 제공합니다.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects">Explore Projects</a>
+        <a class="btn btn-ghost"   href="#publications">See Publications</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">50+</div><div>Projects & Labs</div></div>
+        <div class="stat"><div class="n">100+</div><div>Students Mentored</div></div>
+        <div class="stat"><div class="n">15</div><div>Selected Papers</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTRUCTORS -->
+  <section id="instructors">
+    <div class="container">
+      <h2 class="section-title">Instructors</h2>
+      <div class="grid-instructors">
+        <div class="card card-pad instructor">
+          <img src="assets/jihwanbae.jpg" alt="Jihwan Bae" />
+          <h3>Jason Bae</h3>
+          <ul>
+            <li>(현) 미네르바프렙 대표원장</li>
+            <li>(현) 탑클유학원 메디컬 프로그램 강사</li>
+            <li>(현) 위더엘리트 AP Cal BC 강사</li>
+            <li>(전) 서초 USIS AP Cal BC 교사</li>
+            <li>(전) 압구정 브롬튼에듀 AP 강사</li>
+            <li>(전) LG전자 AI 프로그래밍 강사</li>
+            <li>리서치 프로그램 전문 강사</li>
+            <li>Caltech 학부 Research Fellow</li>
+            <li>부산과학고등학교 졸업</li>
+            <li>정부출연연구소 AI 연구원 출신</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="list-col">
+        <article class="card card-pad media">
+          <img src="assets/vascular.png" alt="Vascular Network" />
+          <div>
+            <h3>Angiogenesis Modeling by Region-Specific Vascular Dynamics</h3>
+            <p class="abstract">Angiogenesis, the formation of new blood vessels, ... (요약 생략)</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="container">
+      <h2 class="section-title">Publications</h2>
+      <div class="list-col">
+        <article class="card card-pad media">
+          <img src="assets/kk_lungcancer_violin.png" alt="Aspirin & Lung Cancer Risk" />
+          <div>
+            <h3>Aspirin-modulated COX-2 Dynamics under PM2.5 Exposure for Lung Cancer Risk</h3>
+            <p class="abstract">Lung cancer remains one of the leading causes of cancer-related mortality ... (요약 생략)</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <div class="wrap">
+        <div class="card card-pad info-box">
+          <p>컨설팅/자료 관련 문의를 남겨주세요.</p>
+          <ul>
+            <li>이메일: innoskoreaedu@gmail.com</li>
+            <li>상담 가능: 월–금 10:00–18:00 (KST)</li>
+            <li>응답: 영업일 기준 24시간 이내</li>
+          </ul>
+          <div class="btn-row">
+            <button class="mini">자료 보기</button>
+            <button class="mini">소개 다시보기</button>
+          </div>
+        </div>
+        <div class="card card-pad form-box">
+          <form>
+            <label>이름</label><input type="text" placeholder="홍길동" required/>
+            <label>이메일</label><input type="email" placeholder="you@example.com" required/>
+            <label>문의 유형</label><select><option>1:1 컨설팅</option><option>프로그램 문의</option></select>
+            <label>메시지</label><textarea placeholder="필요한 내용과 가능한 일정 등을 적어주세요" required></textarea>
+            <button class="submit" type="submit">문의 보내기</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const toggle=document.getElementById('theme-toggle');
+    toggle.addEventListener('click',()=>{
+      document.body.classList.toggle('light-mode');
+      toggle.textContent=document.body.classList.contains('light-mode')?'☀️':'🌙';
+    });
+  </script>
+
+</body>
+</html>
