@@ -240,6 +240,34 @@
       padding:12px;
       font-weight:800
     }
+        footer{
+      padding: 22px 20px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(18,24,38,.55);
+      backdrop-filter: blur(8px);
+      transition: background .3s, border .3s;
+    }
+    body.light-mode footer{
+      background: rgba(255,255,255,.75);
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+    .footer-inner{
+      max-width: 1200px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    .footer-inner .line{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+    }
+    .footer-inner strong{
+      color: var(--text);
+      font-weight: 800;
+    }
   </style>
 </head>
 <body>
@@ -572,6 +600,19 @@
       toggle.textContent=document.body.classList.contains('light-mode')?'☀️':'🌙';
     });
   </script>
-
+  <footer>
+    <div class="footer-inner">
+      <div class="line">
+        <strong>상호:</strong> 노바메디카프렙 <span>|</span>
+        <strong>대표자:</strong> 배지환
+      </div>
+      <div class="line">
+        <strong>사업자등록번호:</strong> 611-11-39484
+      </div>
+      <div class="line">
+        <strong>주소:</strong> 서울특별시 강남구 강남대로112길 47, 2층 579A호
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
